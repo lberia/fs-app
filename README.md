@@ -15,6 +15,8 @@ To start the dev server, if you have docker you can run:
 
 If you don't have docker you can just run `bun run dev`.
 
+The app will run on `localhost:3000`. Api is accessible at `localhost:3000/api`
+
 #### prod
 
 To start the prod server with docker run `bun run docker:prod` or `npm run docker:prod`.
