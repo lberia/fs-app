@@ -8,7 +8,6 @@ export async function listDirectory(req: BunRequest): Promise<Response> {
   const { path } = (await req.body?.json()) || {};
   const fsProvider = new FSProvider(user.id);
   const nodes = await fsProvider.listDirectory(path);
-  console.log(nodes.map((v) => v.createDate));
   return Response.json(nodes);
 }
 
