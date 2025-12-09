@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  padding: 10px;
+  gap: 10px;
+  align-items: center;
+
+  form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+.actionName {
+  margin-left: auto;
+  padding: 0 20px;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
+}
+
+.selectedFileInfo {
+  display: flex;
+}
+
+.selectedFileInfo {
+  padding: 0 10px;
+
+  .selectedFileName {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    white-space: nowrap;
+    vertical-align: middle;
+  }
+}
+
+.message {
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}

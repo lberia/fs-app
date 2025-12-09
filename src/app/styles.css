@@ -1,0 +1,117 @@
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+body {
+  /* 4. Add accessible line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #333;
+  font-size: 14px;
+}
+/* 6. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+/* 7. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/* 8. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+/*
+  10. Create a root stacking context
+*/
+#root,
+#__next {
+  isolation: isolate;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  padding: 10px 20px;
+  border-radius: 20px;
+  border-width: 0px;
+  background-color: #fff;
+}
+
+input[type="button"],
+input[type="submit"],
+button {
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: #ddd;
+  border-width: 0px;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out, opacity 0.15s ease-in-out;
+
+  &:hover {
+    text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25);
+    color: #000;
+    background-color: #e9e9e9;
+  }
+  &:active {
+    background-color: #e4e4e4;
+  }
+  &:disabled {
+    cursor: unset;
+    opacity: 0.4;
+    color: inherit;
+    background-color: #ddd;
+  }
+}
+
+@keyframes centeredSpinny {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

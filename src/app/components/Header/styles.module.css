@@ -1,0 +1,22 @@
+.container {
+  background-color: whitesmoke;
+}
+
+.wrapper {
+  max-width: 1000px;
+  padding: 20px 40px;
+  margin: 0 auto;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.auth {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  border-radius: 20px;
+  background-color: #efefef;
+  padding-left: 20px;
+}

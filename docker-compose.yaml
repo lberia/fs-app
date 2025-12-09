@@ -1,0 +1,31 @@
+services:
+  fs-app-dev:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - fs-app-dev-volume:/app/data
+    develop:
+      watch:
+        - path: ./src/
+          action: sync+restart
+          target: /app/src/
+        - path: .
+          action: rebuild
+          ignore: 
+            - ./src/
+  fs-app-test:
+    build: .
+    command: ["bun", "run", "test", "--watch"]
+    develop:
+      watch:
+        - path: ./src/
+          action: sync
+          target: /app/src/
+        - path: .
+          action: rebuild
+          ignore: 
+            - ./src/
+
+volumes:
+  fs-app-dev-volume: 

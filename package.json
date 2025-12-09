@@ -1,0 +1,40 @@
+{
+  "name": "fs-app",
+  "module": "src/index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "NODE_ENV=test bun test",
+    "dev": "NODE_ENV=development bun --watch src/index.ts",
+    "start": "NODE_ENV=production bun src/index.ts",
+    "build": "bun build src/index.ts --outdir ./build --target bun",
+    "prod": "bun run build && cp -R ./data ./build/data && cd ./build && bun ./index.js",
+    "generate": "bunx drizzle-kit generate --config ./drizzle.config.ts",
+    "migrate": "bun run ./src/server/db/migrate.ts",
+    "docker:build": "bun run docker:clean || true && docker build --pull -t fs-app-image .",
+    "docker:run": "docker run -it --rm -p 3000:3000 --name fs-app-container -v fs-app-volume:/app/data fs-app-image",
+    "postdocker:run": "docker commit fs-app-container fs-app-image || true && docker:rm",
+    "docker:rm": "docker rm fs-app-container",
+    "docker:clean": "npm run docker:rm || true && docker rmi fs-app-image",
+    "docker:prune": "docker:clean || true && docker volume rm fs-app-volume || true && docker compose down -v",
+    "docker:dev": "docker compose up fs-app-dev --build --watch --remove-orphans && docker compose down --rmi local",
+    "docker:test": "bun run docker:build && bun run docker:run run test",
+    "docker:test:watch": "docker compose up fs-app-test --build --watch --remove-orphans && docker compose down --rmi local",
+    "docker:prod": "bun run docker:build && bun run docker:run run prod"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "drizzle-kit": "^0.31.7"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.44.7",
+    "jose": "^6.1.2",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  }
+}
