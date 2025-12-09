@@ -2,9 +2,10 @@ import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 
 import styles from "./styles.module.css";
+import Loader from "../Loader";
 
 export function Auth() {
-  const { login, register } = useAuth();
+  const { login, register, isLoading } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   return (
@@ -36,6 +37,7 @@ export function Auth() {
           onClick={() => register({ email, password })}
         />
       </div>
+      <Loader value={isLoading} />
     </div>
   );
 }

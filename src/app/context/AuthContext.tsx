@@ -31,8 +31,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       method: "POST",
       body: JSON.stringify(credentials),
     });
-    const user: User = await res.json();
-    if (user.id) setUser(user);
+    if (res.ok) {
+      const user: User = await res.json();
+      if (user.id) setUser(user);
+    }
     setIsLoading(false);
   };
 
@@ -51,8 +53,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       method: "POST",
       body: JSON.stringify(body),
     });
-    const user: User = await res.json();
-    if (user.id) setUser(user);
+    if (res.ok) {
+      const user: User = await res.json();
+      if (user.id) setUser(user);
+    }
     setIsLoading(false);
   };
 
